@@ -1,12 +1,16 @@
-'use client';
+"use client";
+
+import { useState } from "react";
 
 export default function DayOffStore() {
+  const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({});
   const products = [
     {
       name: "Slow Mornings Tee",
       price: 25,
       color: "Cream",
        fit: "Relaxed fit · Heavyweight cotton",
+       sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/slow-mornings-front.jpg",
       imageBack: "/images/slow-mornings-back.jpg",
       stripeLink: "https://buy.stripe.com/14AbJ11nH4hOe7Ebzdao801",
@@ -17,6 +21,7 @@ export default function DayOffStore() {
       price: 25,
       color: "Washed Grey",
       fit: "Relaxed fit · Garment-dyed",
+      sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/no-plans-front.jpg",
       imageBack: "/images/no-plans-back.jpg",
       stripeLink: "https://buy.stripe.com/14AcN50jD01y5B846Lao803",
@@ -27,6 +32,7 @@ export default function DayOffStore() {
       price: 25,
       color: "Cream",
       fit: "Relaxed fit · Soft-washed cotton",
+      sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/take-it-easy-front.jpg",
       imageBack: "/images/take-it-easy-back.jpg",
       stripeLink: "https://buy.stripe.com/28E28raYh9C8bZw1YDao802",
@@ -37,6 +43,7 @@ export default function DayOffStore() {
       price: 25,
       color: "Sage",
       fit: "Relaxed fit · Everyday weight",
+      sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/just-relax-front.jpg",
       imageBack: "/images/just-relax-back.jpg",
       stripeLink: "https://buy.stripe.com/7sY9AT8Q96pW7Jg7iXao804",
@@ -47,6 +54,7 @@ export default function DayOffStore() {
       price: 25,
       color: "Cream",
       fit: "Relaxed fit · Premium cotton",
+      sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/day-off-club-front.jpg",
       imageBack: "/images/day-off-club-back.jpg",
       stripeLink: "https://buy.stripe.com/28EaEX1nH9C81kS6eTao800",
@@ -126,7 +134,28 @@ export default function DayOffStore() {
             </div>
 
             <p className="text-sm text-neutral-500">{product.color}</p>
-
+<div className="mt-3 flex gap-2">
+  {product.sizes.map((size) => (
+    <button
+      key={size}
+      onClick={() =>
+        setSelectedSizes({
+          ...selectedSizes,
+          [product.name]: size,
+        })
+      }
+      className={`px-3 py-1 text-xs rounded-md border transition
+        ${
+          selectedSizes[product.name] === size
+            ? "border-black bg-black text-white"
+            : "border-neutral-300 text-black hover:border-black"
+        }
+      `}
+    >
+      {size}
+    </button>
+  ))}
+</div>
             <div className="flex items-center justify-between mt-4">
               <span className="font-medium text-green-700/80">${product.price}</span>
               <a
