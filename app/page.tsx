@@ -55,53 +55,23 @@ export default function DayOffStore() {
 
   return (
     <div className="min-h-screen bg-neutral-50 p-6">
-      <header className="max-w-6xl mx-auto mb-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">DAYOFF</h1>
-        <p className="max-w-3xl mx-auto text-neutral-600 text-base md:text-lg mb-10">
-          DayOff is about looking put-together without trying too hard. Clothes you throw on for class, errands, travel, or chilling — but still feel confident wearing out. No loud flexing. Just clean graphics, premium comfort, and easy silhouettes.
-        </p>
+<header className="max-w-6xl mx-auto mb-16 text-center">
+  <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-green-700">
+    DAYOFF
+  </h1>
+</header>
 
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="relative h-72 bg-neutral-100 rounded-2xl overflow-hidden">
-            <img
-              src="/images/no-plans-front.jpg"
-              alt="No Plans Today Tee front"
-              className="absolute inset-0 h-full w-full object-contain"
-            />
-          </div>
-          <div className="text-left">
-            <span className="inline-block text-xs bg-neutral-900 text-white px-2 py-1 rounded-full mb-3">
-              Best Seller
-            </span>
-            <h2 className="text-2xl font-semibold mb-2">No Plans Today Tee</h2>
-            <p className="text-neutral-600 mb-4">
-              Our most-loved tee. Washed cotton, relaxed fit, and built for days with no schedule.
-            </p>
-            <div className="flex items-center gap-4">
-              <span className="text-lg font-medium">$34</span>
-              <a
-                href="https://buy.stripe.com/test_noplanstoday"
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-2 bg-neutral-900 text-white rounded-xl inline-block"
-              >
-                Buy Now
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold">Shop the Drop</h2>
+          <h2 className="text-xl font-semibold text-green-700/80">Shop the Drop</h2>
           <span className="text-sm text-neutral-500">Free U.S. shipping over $75</span>
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {sortedProducts.map((product, i) => (
-          <div key={i} className="rounded-2xl shadow-sm bg-white p-5 group">
+          <div key={i} className="rounded-2xl bg-white p-6 group transition-all duration-200 hover:shadow-md">
             <div className="h-56 bg-neutral-100 rounded-xl mb-4 overflow-hidden relative group">
   <img
     src={product.imageBack}
@@ -117,7 +87,7 @@ export default function DayOffStore() {
 
 
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-semibold">{product.name}</h3>
+              <h3 className="text-[17px] font-medium tracking-tight text-green-700">{product.name}</h3>
               {product.isBestSeller && (
                 <span className="text-xs bg-neutral-900 text-white px-2 py-0.5 rounded-full">
                   Best Seller
@@ -128,7 +98,7 @@ export default function DayOffStore() {
             <p className="text-sm text-neutral-500">{product.color}</p>
 
             <div className="flex items-center justify-between mt-4">
-              <span className="font-medium">${product.price}</span>
+              <span className="font-medium text-green-700/80">${product.price}</span>
               <a
                 href={product.stripeLink}
                 target="_blank"
