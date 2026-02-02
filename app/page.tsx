@@ -236,7 +236,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     {/* Drawer */}
     <div className="relative w-full max-w-sm bg-white h-full p-6 flex flex-col">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-medium">Your Cart</h2>
+        <h2 className="text-lg font-medium text-black">Your Cart</h2>
         <button
           onClick={() => setIsCartOpen(false)}
           className="text-sm hover:underline"
@@ -247,7 +247,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 
       {/* Cart Items */}
       {cart.length === 0 ? (
-        <p className="text-sm text-neutral-500">Your cart is empty.</p>
+        <p className="text-sm text-black">Your cart is empty.</p>
       ) : (
         <div className="flex-1 space-y-4 overflow-y-auto">
           {cart.map((item, index) => (
@@ -257,13 +257,13 @@ const [isCartOpen, setIsCartOpen] = useState(false);
             >
               <div>
                 <p className="text-sm font-medium">{item.name}</p>
-                <p className="text-xs text-neutral-500">
+                <p className="text-xs text-black">
                   Size {item.size}
                 </p>
               </div>
 
               <div className="flex items-center gap-4">
-                <span className="text-sm">${item.price}</span>
+                <span className="text-sm text-black">${item.price}</span>
                 <button
                   onClick={() =>
                     setCart(cart.filter((_, i) => i !== index))
