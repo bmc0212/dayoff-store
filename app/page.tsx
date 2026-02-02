@@ -139,9 +139,15 @@ export default function DayOffStore() {
     </p>
 
     <div className="flex justify-center gap-6 text-sm text-black">
-      <span className="cursor-pointer hover:underline">Shipping</span>
-      <span className="cursor-pointer hover:underline">Returns</span>
-      <span className="cursor-pointer hover:underline">Contact</span>
+      <a href="/shipping" className="hover:underline">
+  Shipping
+</a>
+      <a href="/returns" className="hover:underline">
+  Returns
+</a>
+      <a href="/contact" className="hover:underline">
+  Contact
+</a>
     </div>
 
     <p className="mt-6 text-xs text-black/60">
