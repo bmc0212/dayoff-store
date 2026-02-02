@@ -71,6 +71,9 @@ export default function DayOffStore() {
       alt="DayOff logo"
       className="h-14 w-auto transition-transform duration-200 hover:scale-[1.03]"
     />
+     <span className="mt-1 ml-6.5 text-xs text-black tracking-wide hover:underline">
+    About
+  </span>
   </a>
 </header>
 <div className="max-w-6xl mx-auto mb-14 text-center">
