@@ -13,10 +13,10 @@ export default function ContactPage() {
         <p className="text-base md:text-lg text-black leading-relaxed">
           Email us at{" "}
           <a
-            href="mailto:hello@dayoff.com"
+            href="mailto:dayoffbrandhelp@gmail.com"
             className="underline"
           >
-            hello@dayoff.com
+            dayoffbrandhelp@gmail.com
           </a>
         </p>
       </div>
