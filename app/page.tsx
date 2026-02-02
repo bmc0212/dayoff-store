@@ -224,6 +224,74 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     </p>
   </div>
 </footer>
+{/* Cart Drawer */}
+{isCartOpen && (
+  <div className="fixed inset-0 z-50 flex justify-end">
+    {/* Overlay */}
+    <div
+      className="absolute inset-0 bg-black/30"
+      onClick={() => setIsCartOpen(false)}
+    />
+
+    {/* Drawer */}
+    <div className="relative w-full max-w-sm bg-white h-full p-6 flex flex-col">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-lg font-medium">Your Cart</h2>
+        <button
+          onClick={() => setIsCartOpen(false)}
+          className="text-sm hover:underline"
+        >
+          Close
+        </button>
+      </div>
+
+      {/* Cart Items */}
+      {cart.length === 0 ? (
+        <p className="text-sm text-neutral-500">Your cart is empty.</p>
+      ) : (
+        <div className="flex-1 space-y-4 overflow-y-auto">
+          {cart.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between border-b pb-3"
+            >
+              <div>
+                <p className="text-sm font-medium">{item.name}</p>
+                <p className="text-xs text-neutral-500">
+                  Size {item.size}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <span className="text-sm">${item.price}</span>
+                <button
+                  onClick={() =>
+                    setCart(cart.filter((_, i) => i !== index))
+                  }
+                  className="text-xs text-red-500 hover:underline"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Cart Footer */}
+      {cart.length > 0 && (
+        <div className="mt-6 border-t pt-4">
+          <button
+            className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
+            onClick={() => alert("Stripe checkout comes next")}
+          >
+            Checkout
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
     </div>
   );
 }
