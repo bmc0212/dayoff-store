@@ -60,6 +60,11 @@ export default function DayOffStore() {
     DAYOFF
   </h1>
 </header>
+<div className="max-w-6xl mx-auto mb-14 text-center">
+  <p className="text-sm md:text-base text-green-700/80 tracking-wide">
+    Put-together, without trying.
+  </p>
+</div>
 
 
       <section className="max-w-6xl mx-auto mb-6">
