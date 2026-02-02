@@ -61,7 +61,7 @@ export default function DayOffStore() {
   </h1>
 </header>
 <div className="max-w-6xl mx-auto mb-14 text-center">
-  <p className="text-sm md:text-base text-green-700/80 tracking-wide">
+  <p className="text-sm md:text-base text-black tracking-wide">
     Put-together, without trying.
   </p>
 </div>
@@ -70,7 +70,7 @@ export default function DayOffStore() {
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-green-700/80">Shop the Drop</h2>
-          <span className="text-sm text-neutral-500">Free U.S. shipping over $75</span>
+          <span className="text-sm text-black">Free U.S. shipping over $75</span>
         </div>
       </section>
 
@@ -116,6 +116,23 @@ export default function DayOffStore() {
           </div>
         ))}
       </section>
+      <footer className="mt-24 border-t border-neutral-200">
+  <div className="max-w-6xl mx-auto px-6 py-12 text-center">
+    <p className="text-sm font-medium text-black mb-4">
+      DAYOFF
+    </p>
+
+    <div className="flex justify-center gap-6 text-sm text-black">
+      <span className="cursor-pointer hover:underline">Shipping</span>
+      <span className="cursor-pointer hover:underline">Returns</span>
+      <span className="cursor-pointer hover:underline">Contact</span>
+    </div>
+
+    <p className="mt-6 text-xs text-black/60">
+      © {new Date().getFullYear()} DayOff. All rights reserved.
+    </p>
+  </div>
+</footer>
     </div>
   );
 }
