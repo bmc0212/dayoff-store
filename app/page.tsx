@@ -4,6 +4,15 @@ import { useState } from "react";
 
 export default function DayOffStore() {
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({});
+  const [cart, setCart] = useState<
+  {
+    name: string;
+    size: string;
+    price: number;
+    quantity: number;
+  }[]
+>([]);
+const [isCartOpen, setIsCartOpen] = useState(false);
   const products = [
     {
       name: "Slow Mornings Tee",
@@ -74,26 +83,31 @@ export default function DayOffStore() {
     DAYOFF
   </h1>
 
-  {/* Logo on the right */}
-  <a
-    href="/about"
-    className="absolute right-0 transition-opacity duration-200 hover:opacity-80"
-  >
-    <img
-      src="/logo.png"
-      alt="DayOff logo"
-      className="h-14 w-auto transition-transform duration-200 hover:scale-[1.03]"
-    />
-     <span className="mt-1 ml-6.5 text-xs text-black tracking-wide hover:underline">
-    About
-  </span>
-  </a>
+  {/* Logo + About + Cart (top right) */}
+  <div className="absolute right-0 flex flex-col items-center">
+    <a
+      href="/about"
+      className="flex flex-col items-center transition-opacity duration-200 hover:opacity-80"
+    >
+      <img
+        src="/logo.png"
+        alt="DayOff logo"
+        className="h-12 w-auto transition-transform duration-200 hover:scale-[1.03]"
+      />
+      <span className="mt-1 text-xs text-black tracking-wide hover:underline">
+        About
+      </span>
+    </a>
+
+    <button
+      onClick={() => setIsCartOpen(true)}
+      className="mt-2 text-xs text-black hover:underline"
+    >
+      Cart ({cart.length})
+    </button>
+  </div>
 </header>
-<div className="max-w-6xl mx-auto mb-14 text-center">
-  <p className="text-sm md:text-base text-black tracking-wide">
-    Put-together, without trying.
-  </p>
-</div>
+
 
 
       <section className="max-w-6xl mx-auto mb-6">
@@ -158,14 +172,31 @@ export default function DayOffStore() {
 </div>
             <div className="flex items-center justify-between mt-4">
               <span className="font-medium text-green-700/80">${product.price}</span>
-              <a
-                href={product.stripeLink}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 bg-neutral-900 text-white rounded-xl"
-              >
-                Buy Now
-              </a>
+             <button
+  onClick={() => {
+    const size = selectedSizes[product.name];
+    if (!size) return;
+
+    setCart([
+      ...cart,
+      {
+        name: product.name,
+        size,
+        price: product.price,
+        quantity: 1,
+      },
+    ]);
+  }}
+  disabled={!selectedSizes[product.name]}
+  className={`px-4 py-2 rounded-xl transition ${
+    selectedSizes[product.name]
+      ? "bg-neutral-900 text-white hover:bg-black"
+      : "bg-neutral-300 text-neutral-500 cursor-not-allowed"
+  }`}
+>
+  Add to Cart
+</button>
+
             </div>
           </div>
         ))}
