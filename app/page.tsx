@@ -55,10 +55,23 @@ export default function DayOffStore() {
 
   return (
     <div className="min-h-screen bg-neutral-50 p-6">
-<header className="max-w-6xl mx-auto mb-16 text-center">
+<header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
+  {/* Center brand name */}
   <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-green-700">
     DAYOFF
   </h1>
+
+  {/* Logo on the right */}
+  <a
+    href="/about"
+    className="absolute right-0 transition-opacity duration-200 hover:opacity-80"
+  >
+    <img
+      src="/logo.png"
+      alt="DayOff logo"
+      className="h-14 w-auto transition-transform duration-200 hover:scale-[1.03]"
+    />
+  </a>
 </header>
 <div className="max-w-6xl mx-auto mb-14 text-center">
   <p className="text-sm md:text-base text-black tracking-wide">
