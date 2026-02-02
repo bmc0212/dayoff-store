@@ -6,6 +6,7 @@ export default function DayOffStore() {
       name: "Slow Mornings Tee",
       price: 25,
       color: "Cream",
+       fit: "Relaxed fit · Heavyweight cotton",
       imageFront: "/images/slow-mornings-front.jpg",
       imageBack: "/images/slow-mornings-back.jpg",
       stripeLink: "https://buy.stripe.com/14AbJ11nH4hOe7Ebzdao801",
@@ -15,6 +16,7 @@ export default function DayOffStore() {
       name: "No Plans Today Tee",
       price: 25,
       color: "Washed Grey",
+      fit: "Relaxed fit · Garment-dyed",
       imageFront: "/images/no-plans-front.jpg",
       imageBack: "/images/no-plans-back.jpg",
       stripeLink: "https://buy.stripe.com/14AcN50jD01y5B846Lao803",
@@ -24,6 +26,7 @@ export default function DayOffStore() {
       name: "Take It Easy Tee",
       price: 25,
       color: "Cream",
+      fit: "Relaxed fit · Soft-washed cotton",
       imageFront: "/images/take-it-easy-front.jpg",
       imageBack: "/images/take-it-easy-back.jpg",
       stripeLink: "https://buy.stripe.com/28E28raYh9C8bZw1YDao802",
@@ -33,6 +36,7 @@ export default function DayOffStore() {
       name: "Just Relax Tee",
       price: 25,
       color: "Sage",
+      fit: "Relaxed fit · Everyday weight",
       imageFront: "/images/just-relax-front.jpg",
       imageBack: "/images/just-relax-back.jpg",
       stripeLink: "https://buy.stripe.com/7sY9AT8Q96pW7Jg7iXao804",
@@ -42,6 +46,7 @@ export default function DayOffStore() {
       name: "Day Off Club Tee",
       price: 25,
       color: "Cream",
+      fit: "Relaxed fit · Premium cotton",
       imageFront: "/images/day-off-club-front.jpg",
       imageBack: "/images/day-off-club-back.jpg",
       stripeLink: "https://buy.stripe.com/28EaEX1nH9C81kS6eTao800",
@@ -108,7 +113,11 @@ export default function DayOffStore() {
 
 
             <div className="flex items-center gap-2">
-              <h3 className="text-[17px] font-medium tracking-tight text-green-700">{product.name}</h3>
+              <h3 className="text-[17px] font-medium tracking-tight text-green-700">{product.name}
+                <p className="mt-1 text-xs text-black/70 tracking-wide">
+  {product.fit}
+</p>
+              </h3>
               {product.isBestSeller && (
                 <span className="text-xs bg-neutral-900 text-white px-2 py-0.5 rounded-full">
                   Best Seller
