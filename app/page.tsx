@@ -16,7 +16,7 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
   },
   "Take It Easy Tee": {
     S: "price_1SwTWkEIwxz2SPmIwk8II4BD",
-    M: "price_1SwH7GEIwxz2SPmIsZtcxjKn",
+    M: "price_1SwsvUEIwxz2SPmIWOZb4msd",
     L: "price_1SwTWkEIwxz2SPmIAk4rWkAv",
     XL: "price_1SwTWkEIwxz2SPmI70t2a2es",
   },
@@ -48,7 +48,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
   const products = [
     {
       name: "Slow Mornings Tee",
-      price: 25,
+      price: 30,
       color: "Cream",
        fit: "Relaxed fit · Heavyweight cotton",
        sizes: ["S", "M", "L", "XL"],
@@ -59,7 +59,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     },
     {
       name: "No Plans Today Tee",
-      price: 25,
+      price: 30,
       color: "Washed Grey",
       fit: "Relaxed fit · Garment-dyed",
       sizes: ["S", "M", "L", "XL"],
@@ -70,7 +70,7 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     },
     {
       name: "Take It Easy Tee",
-      price: 25,
+      price: 30,
       color: "Cream",
       fit: "Relaxed fit · Soft-washed cotton",
       sizes: ["S", "M", "L", "XL"],
@@ -81,8 +81,8 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     },
     {
       name: "Just Relax Tee",
-      price: 25,
-      color: "Sage",
+      price: 30,
+      color: "White",
       fit: "Relaxed fit · Everyday weight",
       sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/just-relax-front.jpg",
@@ -92,8 +92,8 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     },
     {
       name: "Day Off Club Tee",
-      price: 25,
-      color: "Cream",
+      price: 30,
+      color: "White",
       fit: "Relaxed fit · Premium cotton",
       sizes: ["S", "M", "L", "XL"],
       imageFront: "/images/day-off-club-front.jpg",
