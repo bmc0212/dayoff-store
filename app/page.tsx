@@ -1,6 +1,38 @@
 "use client";
 
 import { useState } from "react";
+const PRICE_MAP: Record<string, Record<string, string>> = {
+  "No Plans Today Tee": {
+    S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
+    M: "price_1SwH4SEIwxz2SPmIJqsch3I4",
+    L: "price_1SwbdwEIwxz2SPmI1qOMypzG",
+    XL: "price_1SwbeREIwxz2SPmI4ozIpSr3",
+  },
+  "Slow Mornings Tee": {
+    S: "price_1SwbbEEIwxz2SPmIGU7LQ7uS",
+    M: "price_1Swbb2EIwxz2SPmIBoW5yRNd",
+    L: "price_1SwH6lEIwxz2SPmILCYhiB2S",
+    XL: "price_1SwbaSEIwxz2SPmI9LPx8AKp",
+  },
+  "Take It Easy Tee": {
+    S: "price_1SwTWkEIwxz2SPmIwk8II4BD",
+    M: "price_1SwH7GEIwxz2SPmIsZtcxjKn",
+    L: "price_1SwTWkEIwxz2SPmIAk4rWkAv",
+    XL: "price_1SwTWkEIwxz2SPmI70t2a2es",
+  },
+  "Just Relax Tee": {
+    S: "price_1SwbeyEIwxz2SPmIZl0vTigJ",
+    M: "price_1Swbf8EIwxz2SPmI3sTwCENi",
+    L: "price_1SwbfKEIwxz2SPmINd7TFJ7O",
+    XL: "price_1SwH48EIwxz2SPmIYjj7skbH",
+  },
+  "Day Off Club Tee": {
+    S: "price_1SwbgxEIwxz2SPmIDmCwrnCV",
+    M: "price_1Swbh7EIwxz2SPmIRRIhlVD4",
+    L: "price_1SwbhGEIwxz2SPmISmXYNaDV",
+    XL: "price_1SwH3ZEIwxz2SPmI8gxZrYFz",
+  },
+};
 
 export default function DayOffStore() {
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({});
@@ -282,11 +314,25 @@ const [isCartOpen, setIsCartOpen] = useState(false);
       {cart.length > 0 && (
         <div className="mt-6 border-t pt-4">
           <button
-            className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
-            onClick={() => alert("Stripe checkout comes next")}
-          >
-            Checkout
-          </button>
+  className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
+  onClick={async () => {
+    const items = cart.map((item) => ({
+      price: PRICE_MAP[item.name][item.size],
+      quantity: item.quantity,
+    }));
+
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items }),
+    });
+
+    const data = await res.json();
+    window.location.href = data.url;
+  }}
+>
+  Checkout
+</button>
         </div>
       )}
     </div>
