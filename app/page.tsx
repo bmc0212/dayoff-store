@@ -261,12 +261,12 @@ const [isCartOpen, setIsCartOpen] = useState(false);
   <div className="fixed inset-0 z-50 flex justify-end">
     {/* Overlay */}
     <div
-      className="absolute inset-0 bg-black/30"
+      className="absolute inset-0 bg-black/30 z-40"
       onClick={() => setIsCartOpen(false)}
     />
 
     {/* Drawer */}
-    <div className="relative w-full max-w-sm bg-white h-full p-6 flex flex-col">
+    <div className="relative z-50 w-full max-w-sm bg-white h-full p-6 flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-medium text-black">Your Cart</h2>
         <button
@@ -313,13 +313,26 @@ const [isCartOpen, setIsCartOpen] = useState(false);
       {/* Cart Footer */}
       {cart.length > 0 && (
         <div className="mt-6 border-t pt-4">
-          <button
+<button
   className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
   onClick={async () => {
-    const items = cart.map((item) => ({
-      price: PRICE_MAP[item.name][item.size],
-      quantity: item.quantity,
-    }));
+    const items = cart
+      .map((item) => {
+        const priceId = PRICE_MAP[item.name]?.[item.size];
+
+        if (!priceId) return null;
+
+        return {
+          price: priceId,
+          quantity: item.quantity,
+        };
+      })
+      .filter(Boolean);
+
+    if (items.length === 0) {
+      alert("Cart items missing Stripe prices.");
+      return;
+    }
 
     const res = await fetch("/api/checkout", {
       method: "POST",
@@ -328,11 +341,18 @@ const [isCartOpen, setIsCartOpen] = useState(false);
     });
 
     const data = await res.json();
-    window.location.href = data.url;
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert(data.error || "Checkout failed");
+    }
   }}
 >
   Checkout
 </button>
+
+
         </div>
       )}
     </div>
