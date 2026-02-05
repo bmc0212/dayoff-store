@@ -14,12 +14,22 @@ export async function POST(req: Request) {
       );
     }
 
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: body.items,
-      success_url: `${req.headers.get("origin")}/success`,
-      cancel_url: `${req.headers.get("origin")}`,
-    });
+   const session = await stripe.checkout.sessions.create({
+  mode: "payment",
+  line_items: body.items,
+
+  shipping_address_collection: {
+    allowed_countries: ["US"],
+  },
+
+  phone_number_collection: {
+    enabled: true,
+  },
+
+  success_url: `${req.headers.get("origin")}/success`,
+  cancel_url: `${req.headers.get("origin")}`,
+});
+
 
     return NextResponse.json({
       url: session.url,
