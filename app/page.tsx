@@ -4,14 +4,14 @@ import { useState } from "react";
 const PRICE_MAP: Record<string, Record<string, string>> = {
   "No Plans Today Tee": {
     S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
-    M: "price_1SwH4SEIwxz2SPmIJqsch3I4",
-    L: "price_1SwbdwEIwxz2SPmI1qOMypzG",
+    M: "price_1SxMH3EIwxz2SPmI8AfW3Jln",
+    L: "price_1SxMGkEIwxz2SPmITgDQqswJ",
     XL: "price_1SwbeREIwxz2SPmI4ozIpSr3",
   },
   "Slow Mornings Tee": {
-    S: "price_1SwbbEEIwxz2SPmIGU7LQ7uS",
+    S: "price_1SxMCLEIwxz2SPmIgFYf9nBz",
     M: "price_1Swbb2EIwxz2SPmIBoW5yRNd",
-    L: "price_1SwH6lEIwxz2SPmILCYhiB2S",
+    L: "price_1SxME9EIwxz2SPmINNbTm0Gr",
     XL: "price_1SwbaSEIwxz2SPmI9LPx8AKp",
   },
   "Take It Easy Tee": {
@@ -24,13 +24,13 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
     S: "price_1SwbeyEIwxz2SPmIZl0vTigJ",
     M: "price_1Swbf8EIwxz2SPmI3sTwCENi",
     L: "price_1SwbfKEIwxz2SPmINd7TFJ7O",
-    XL: "price_1SwH48EIwxz2SPmIYjj7skbH",
+    XL: "price_1SxMIlEIwxz2SPmIiwz5XDua",
   },
   "Day Off Club Tee": {
     S: "price_1SwbgxEIwxz2SPmIDmCwrnCV",
     M: "price_1Swbh7EIwxz2SPmIRRIhlVD4",
     L: "price_1SwbhGEIwxz2SPmISmXYNaDV",
-    XL: "price_1SwH3ZEIwxz2SPmI8gxZrYFz",
+    XL: "price_1SxMKhEIwxz2SPmIH3mWKHJt",
   },
 };
 
