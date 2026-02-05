@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DayOff",
   description: "DayOff is about looking put-together without trying too hard. Clean graphics, premium comfort, easy silhouettes.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
