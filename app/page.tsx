@@ -45,6 +45,7 @@ export default function DayOffStore() {
   }[]
 >([]);
 const [isCartOpen, setIsCartOpen] = useState(false);
+const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
   const products = [
     {
       name: "Slow Mornings Tee",
@@ -152,17 +153,31 @@ const [isCartOpen, setIsCartOpen] = useState(false);
       <section className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {sortedProducts.map((product, i) => (
           <div key={i} className="rounded-2xl bg-white p-6 group transition-all duration-200 hover:shadow-md">
-            <div className="h-56 bg-neutral-100 rounded-xl mb-4 overflow-hidden relative group">
+            <div
+  className="h-56 bg-neutral-100 rounded-xl mb-4 overflow-hidden relative group cursor-pointer"
+  onClick={() =>
+    setFlippedProduct(
+      flippedProduct === product.name ? null : product.name
+    )
+  }
+>
   <img
-    src={product.imageBack}
-    alt={`${product.name} back`}
-    className="absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
-  />
+  src={product.imageBack}
+  alt={`${product.name} back`}
+  className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${
+    flippedProduct === product.name ? "opacity-0" : "opacity-100"
+  }`}
+/>
   <img
-    src={product.imageFront}
-    alt={`${product.name} front`}
-    className="absolute inset-0 h-full w-full object-contain transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-  />
+  src={product.imageFront}
+  alt={`${product.name} front`}
+  className={`
+    absolute inset-0 h-full w-full object-contain transition-opacity duration-300
+    opacity-0
+    group-hover:opacity-100
+    ${flippedProduct === product.name ? "opacity-100" : ""}
+  `}
+/>
 </div>
 
 
