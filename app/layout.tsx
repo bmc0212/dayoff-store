@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "DayOff",
   description: "DayOff is about looking put-together without trying too hard. Clean graphics, premium comfort, easy silhouettes.",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
