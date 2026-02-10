@@ -311,9 +311,9 @@ const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
             >
               <div>
                 <p className="text-sm font-medium">{item.name}</p>
-                <p className="text-xs text-black">
-                  Size {item.size}
-                </p>
+               <p className="text-xs text-black/70">
+  Size: <span className="font-medium text-black">{item.size}</span>
+</p>
               </div>
 
               <div className="flex items-center gap-4">
