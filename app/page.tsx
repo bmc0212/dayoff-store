@@ -44,6 +44,7 @@ export default function DayOffStore() {
     quantity: number;
   }[]
 >([]);
+const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
   const products = [
@@ -220,20 +221,26 @@ const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
             <div className="flex items-center justify-between mt-4">
               <span className="font-medium text-green-700/80">${product.price}</span>
              <button
-  onClick={() => {
-    const size = selectedSizes[product.name];
-    if (!size) return;
+ onClick={() => {
+  const size = selectedSizes[product.name];
+  if (!size) return;
 
-    setCart([
-      ...cart,
-      {
-        name: product.name,
-        size,
-        price: product.price,
-        quantity: 1,
-      },
-    ]);
-  }}
+  setCart([
+    ...cart,
+    {
+      name: product.name,
+      size,
+      price: product.price,
+      quantity: 1,
+    },
+  ]);
+
+  setAddedMessage(`${product.name} added to cart`);
+
+  setTimeout(() => {
+    setAddedMessage(null);
+  }, 2000);
+}}
   disabled={!selectedSizes[product.name]}
   className={`px-4 py-2 rounded-xl transition ${
     selectedSizes[product.name]
@@ -371,6 +378,11 @@ const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
         </div>
       )}
     </div>
+  </div>
+)}
+{addedMessage && (
+  <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-neutral-900 text-white px-4 py-2 rounded-full text-sm shadow-lg">
+    {addedMessage}
   </div>
 )}
     </div>
