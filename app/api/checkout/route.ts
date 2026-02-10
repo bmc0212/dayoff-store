@@ -14,13 +14,19 @@ export async function POST(req: Request) {
       );
     }
 
-   const session = await stripe.checkout.sessions.create({
+const session = await stripe.checkout.sessions.create({
   mode: "payment",
   line_items: body.items,
 
   shipping_address_collection: {
     allowed_countries: ["US"],
   },
+
+  shipping_options: [
+    {
+      shipping_rate: "shr_1SwsJnEIwxz2SPmI8pS0TjWO",
+    },
+  ],
 
   phone_number_collection: {
     enabled: true,
