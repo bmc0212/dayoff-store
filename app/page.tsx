@@ -47,6 +47,22 @@ export default function DayOffStore() {
 const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
+const FREE_SHIPPING_THRESHOLD = 75;
+
+const cartTotal = cart.reduce(
+  (total, item) => total + item.price * item.quantity,
+  0
+);
+
+const amountRemaining = Math.max(
+  FREE_SHIPPING_THRESHOLD - cartTotal,
+  0
+);
+
+const progressPercentage = Math.min(
+  (cartTotal / FREE_SHIPPING_THRESHOLD) * 100,
+  100
+);
   const products = [
     {
       name: "Slow Mornings Tee",
@@ -333,10 +349,32 @@ const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
       )}
 
       {/* Cart Footer */}
-      {cart.length > 0 && (
-        <div className="mt-6 border-t pt-4">
-<button
-  className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
+{cart.length > 0 && (
+  <div className="mt-6 border-t pt-4">
+
+    {/* 🔥 FREE SHIPPING TRACKER */}
+    <div className="mb-4">
+      {cartTotal < FREE_SHIPPING_THRESHOLD ? (
+        <p className="text-sm text-black mb-2">
+          You’re <span className="font-medium">${amountRemaining}</span> away from free shipping.
+        </p>
+      ) : (
+        <p className="text-sm text-green-700 font-medium mb-2">
+          You’ve unlocked free shipping 🎉
+        </p>
+      )}
+
+      <div className="w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-green-700 transition-all duration-500"
+          style={{ width: `${progressPercentage}%` }}
+        />
+      </div>
+    </div>
+
+    {/* Existing Checkout Button */}
+    <button
+      className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
   onClick={async () => {
     const items = cart
       .map((item) => {
