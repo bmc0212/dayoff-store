@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import confetti from "canvas-confetti";
+import { useEffect, useRef } from "react";
 const PRICE_MAP: Record<string, Record<string, string>> = {
   "No Plans Today Tee": {
     S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
@@ -63,6 +65,27 @@ const progressPercentage = Math.min(
   (cartTotal / FREE_SHIPPING_THRESHOLD) * 100,
   100
 );
+ const hasCelebrated = useRef(false);
+
+  useEffect(() => {
+    if (
+      cartTotal >= FREE_SHIPPING_THRESHOLD &&
+      !hasCelebrated.current
+    ) {
+      hasCelebrated.current = true;
+
+      confetti({
+        particleCount: 60,
+        spread: 70,
+        origin: { y: 0.7 },
+      });
+    }
+
+    if (cartTotal < FREE_SHIPPING_THRESHOLD) {
+      hasCelebrated.current = false;
+    }
+  }, [cartTotal]);
+
   const products = [
     {
       name: "Slow Mornings Tee",
