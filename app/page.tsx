@@ -394,13 +394,16 @@ const progressPercentage = Math.min(
       return;
     }
 
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items }),
-    });
+   const res = await fetch("/api/checkout", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    items,
+    cartTotal,
+  }),
+});
 
-    const data = await res.json();
+const data = await res.json();
 
     if (data.url) {
       window.location.href = data.url;

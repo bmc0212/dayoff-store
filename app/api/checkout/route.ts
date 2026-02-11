@@ -14,6 +14,13 @@ export async function POST(req: Request) {
       );
     }
 
+    const FREE_SHIPPING_THRESHOLD = 75;
+
+const shippingRateId =
+  body.cartTotal >= FREE_SHIPPING_THRESHOLD
+    ? "shr_1SzX5qEIwxz2SPmIALiYGj4A"
+    : "sshr_1SwsJnEIwxz2SPmI8pS0TjWO";
+
 const session = await stripe.checkout.sessions.create({
   mode: "payment",
   line_items: body.items,
@@ -24,7 +31,7 @@ const session = await stripe.checkout.sessions.create({
 
   shipping_options: [
     {
-      shipping_rate: "shr_1SwsJnEIwxz2SPmI8pS0TjWO",
+      shipping_rate: shippingRateId,
     },
   ],
 
