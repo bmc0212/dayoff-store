@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 const shippingRateId =
   body.cartTotal >= FREE_SHIPPING_THRESHOLD
     ? "shr_1SzX5qEIwxz2SPmIALiYGj4A"
-    : "sshr_1SwsJnEIwxz2SPmI8pS0TjWO";
+    : "shr_1SwsJnEIwxz2SPmI8pS0TjWO";
 
 const session = await stripe.checkout.sessions.create({
   mode: "payment",
