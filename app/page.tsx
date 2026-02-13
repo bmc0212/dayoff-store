@@ -3,6 +3,7 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import { useEffect, useRef } from "react";
+import Hero from "@/components/Hero";
 const PRICE_MAP: Record<string, Record<string, string>> = {
   "No Plans Today Tee": {
     S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
@@ -149,6 +150,9 @@ const progressPercentage = Math.min(
   );
 
   return (
+  <>
+    <Hero />
+
     <div className="min-h-screen bg-neutral-50 p-6">
 <header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
   {/* Center brand name */}
@@ -449,6 +453,7 @@ const data = await res.json();
     {addedMessage}
   </div>
 )}
-    </div>
-  );
+       </div>
+  </>
+);
 }
