@@ -3,8 +3,8 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import { useEffect, useRef } from "react";
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
 const PRICE_MAP: Record<string, Record<string, string>> = {
   "No Plans Today Tee": {
     S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
