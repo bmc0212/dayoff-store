@@ -3,16 +3,20 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-[90vh] md:h-screen w-full overflow-hidden">
       
       {/* Background Image */}
-      <Image
-        src="/hero.jpg"
-        alt="DayOff sunrise NYC balcony"
-        fill
-        priority
-        className="object-cover object-[center_25%] sm:object-[center_20%]"
-      />
+     <Image
+  src="/hero.jpg"
+  alt="DayOff sunrise NYC balcony"
+  fill
+  priority
+  className="
+    object-cover
+    object-[center_25%]
+    md:object-[center_15%]
+  "
+/>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/30" />
