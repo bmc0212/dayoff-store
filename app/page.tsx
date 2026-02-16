@@ -50,6 +50,7 @@ export default function DayOffStore() {
 const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
+const [showMiniCart, setShowMiniCart] = useState(false);
 const FREE_SHIPPING_THRESHOLD = 75;
 
 const cartTotal = cart.reduce(
@@ -255,27 +256,27 @@ const progressPercentage = Math.min(
 </div>
             <div className="flex items-center justify-between mt-4">
               <span className="font-medium text-black">${product.price}</span>
-             <button
- onClick={() => {
-  const size = selectedSizes[product.name];
-  if (!size) return;
+            <button
+  onClick={() => {
+    const size = selectedSizes[product.name];
+    if (!size) return;
 
-  setCart([
-    ...cart,
-    {
-      name: product.name,
-      size,
-      price: product.price,
-      quantity: 1,
-    },
-  ]);
+    setCart([
+      ...cart,
+      {
+        name: product.name,
+        size,
+        price: product.price,
+        quantity: 1,
+      },
+    ]);
 
-  setAddedMessage(`${product.name} added to cart`);
+    setShowMiniCart(true);
 
-  setTimeout(() => {
-    setAddedMessage(null);
-  }, 2000);
-}}
+    setTimeout(() => {
+      setShowMiniCart(false);
+    }, 4000);
+  }}
   disabled={!selectedSizes[product.name]}
   className={`px-4 py-2 rounded-none transition ${
     selectedSizes[product.name]
@@ -285,7 +286,6 @@ const progressPercentage = Math.min(
 >
   Add to Cart
 </button>
-
             </div>
           </div>
         ))}
@@ -443,6 +443,31 @@ const data = await res.json();
 {addedMessage && (
   <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-neutral-900 text-white px-4 py-2 rounded-full text-sm shadow-lg">
     {addedMessage}
+  </div>
+)}
+{showMiniCart && (
+  <div
+    className="
+      fixed top-24 right-6 z-50
+      w-80 bg-white border border-black
+      p-6 shadow-lg
+      transition-transform duration-500
+    "
+  >
+    <p className="text-xs tracking-[0.2em] text-black mb-3">
+      ADDED TO CART
+    </p>
+
+    <p className="text-sm font-medium text-black">
+      {cart[cart.length - 1]?.name}
+    </p>
+
+    <button
+      onClick={() => setIsCartOpen(true)}
+      className="mt-4 text-sm tracking-wide text-black hover:opacity-70 transition"
+    >
+      VIEW CART
+    </button>
   </div>
 )}
        </div>
