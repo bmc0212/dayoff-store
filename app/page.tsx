@@ -155,10 +155,10 @@ const progressPercentage = Math.min(
 
     <div 
     id="shop-section"
-    className="min-h-screen bg-neutral-50 p-6">
+    className="min-h-screen bg-white px-12 py-32">
 <header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
   {/* Center brand name */}
-  <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-green-700">
+  <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
     DAYOFF
   </h1>
 
@@ -188,17 +188,16 @@ const progressPercentage = Math.min(
 </header>
 
 
-
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-green-700/80">Shop the Drop</h2>
+          <h2 className="text-4xl font-light tracking-[0.2em] text-black">Shop the Drop</h2>
           <span className="text-sm text-black">Free U.S. shipping over $75</span>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         {sortedProducts.map((product, i) => (
-          <div key={i} className="rounded-2xl bg-white p-6 group transition-all duration-200 hover:shadow-md">
+          <div key={i} className="group">
             <div
   className="h-56 bg-neutral-100 rounded-xl mb-4 overflow-hidden relative group cursor-pointer"
   onClick={() =>
@@ -228,7 +227,7 @@ const progressPercentage = Math.min(
 
 
             <div className="flex items-center gap-2">
-              <h3 className="text-[17px] font-medium tracking-tight text-green-700">{product.name}
+              <h3 className="text-[17px] font-medium tracking-tight text-black">{product.name}
                 <p className="mt-1 text-xs text-black/70 tracking-wide">
   {product.fit}
 </p>
@@ -264,7 +263,7 @@ const progressPercentage = Math.min(
   ))}
 </div>
             <div className="flex items-center justify-between mt-4">
-              <span className="font-medium text-green-700/80">${product.price}</span>
+              <span className="font-medium text-black">${product.price}</span>
              <button
  onClick={() => {
   const size = selectedSizes[product.name];
@@ -289,7 +288,7 @@ const progressPercentage = Math.min(
   disabled={!selectedSizes[product.name]}
   className={`px-4 py-2 rounded-xl transition ${
     selectedSizes[product.name]
-      ? "bg-neutral-900 text-white hover:bg-black"
+      ? "border border-black text-black hover:bg-black hover:text-white"
       : "bg-neutral-300 text-neutral-500 cursor-not-allowed"
   }`}
 >
@@ -388,14 +387,14 @@ const progressPercentage = Math.min(
           You’re <span className="font-medium">${amountRemaining}</span> away from free shipping.
         </p>
       ) : (
-        <p className="text-sm text-green-700 font-medium mb-2">
+        <p className="text-sm text-black font-medium mb-2">
           You’ve unlocked free shipping 🎉
         </p>
       )}
 
       <div className="w-full h-2 bg-neutral-200 rounded-full overflow-hidden">
         <div
-          className="h-full bg-green-700 transition-all duration-500"
+          className="h-full bg-black transition-all duration-500"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
