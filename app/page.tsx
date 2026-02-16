@@ -51,6 +51,7 @@ const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
 const [showMiniCart, setShowMiniCart] = useState(false);
+const [subscribed, setSubscribed] = useState(false);
 const FREE_SHIPPING_THRESHOLD = 75;
 
 const cartTotal = cart.reduce(
@@ -400,19 +401,24 @@ const progressPercentage = Math.min(
 
   <form
     onSubmit={async (e) => {
-      e.preventDefault();
-      const form = e.target as HTMLFormElement;
-      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+  e.preventDefault();
 
-      await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+  const form = e.target as HTMLFormElement;
+  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
 
-      form.reset();
-      alert("You're in.");
-    }}
+  await fetch("/api/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+
+  form.reset();
+  setSubscribed(true);
+
+  setTimeout(() => {
+    setSubscribed(false);
+  }, 3000);
+}}
     className="mt-10 flex justify-center"
   >
     <input
@@ -430,6 +436,11 @@ const progressPercentage = Math.min(
       Subscribe
     </button>
   </form>
+  {subscribed && (
+  <p className="mt-6 text-sm text-black opacity-70">
+    You’re in.
+  </p>
+)}
 </section>
 </footer>
 {/* Cart Drawer */}
