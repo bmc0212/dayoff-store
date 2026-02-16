@@ -346,13 +346,24 @@ const progressPercentage = Math.min(
           </div>
         ))}
       </section>
-      <section className="mt-24 py-32 px-16 bg-black text-white grid md:grid-cols-2 gap-16 items-center">
-  <h2 className="text-5xl font-semibold">
-    Effort Looks Better When It’s Effortless.
-  </h2>
-  <p className="text-lg opacity-70">
-    Designed to move seamlessly between slow mornings and late evenings.
-  </p>
+      
+      <div className="h-px bg-neutral-200 w-full" />
+
+      <section className="mt-32 py-40 px-16 bg-black text-white">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+
+    <h2 className="text-6xl md:text-7xl font-semibold tracking-tight leading-tight">
+      Effort Looks Better
+      <br />
+      When It’s Effortless.
+    </h2>
+
+    <p className="text-lg opacity-70 leading-relaxed">
+      Designed to move seamlessly between slow mornings and late evenings.
+      Elevated essentials made to carry presence without trying.
+    </p>
+
+  </div>
 </section>
       <footer className="mt-24 border-t border-neutral-200">
   <div className="max-w-6xl mx-auto px-6 py-12 text-center">
