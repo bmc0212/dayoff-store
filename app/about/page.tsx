@@ -2,7 +2,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-neutral-50 px-6 py-24">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-green-700 mb-8">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-black mb-8">
           About DayOff
         </h1>
 
