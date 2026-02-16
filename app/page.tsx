@@ -179,11 +179,11 @@ const progressPercentage = Math.min(
     </a>
 
     <button
-      onClick={() => setIsCartOpen(true)}
-      className="mt-2 text-xs text-black hover:underline"
-    >
-      Cart ({cart.length})
-    </button>
+  onClick={() => setIsCartOpen(true)}
+  className="mt-3 text-sm tracking-[0.2em] text-black hover:opacity-70 transition"
+>
+  CART ({cart.length})
+</button>
   </div>
 </header>
 
