@@ -4,6 +4,7 @@ import { useState } from "react";
 import confetti from "canvas-confetti";
 import { useEffect, useRef } from "react";
 import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
 const PRICE_MAP: Record<string, Record<string, string>> = {
   "No Plans Today Tee": {
     S: "price_1Swbd7EIwxz2SPmIXhJN5SRs",
@@ -153,64 +154,11 @@ const progressPercentage = Math.min(
 
   return (
   <>
+  <Navbar cartLength={cart.length} openCart={() => setIsCartOpen(true)} />
     <Hero />
 
     <div 
     className="min-h-screen bg-white px-12 py-32">
-<header className="sticky top-0 z-50 bg-white border-b border-neutral-200">
-  <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-
-  {/* Top Row (Mobile Layout) */}
-  <div className="flex items-center justify-between md:hidden">
-    <a
-      href="/about"
-      className="text-sm text-black tracking-wide"
-    >
-      About
-    </a>
-
-    <button
-      onClick={() => setIsCartOpen(true)}
-      className="text-sm tracking-[0.2em] text-black"
-    >
-      CART ({cart.length})
-    </button>
-  </div>
-
-  {/* Center Brand */}
-  <div className="text-center mt-8 md:mt-0">
-    <h1 className="text-6xl md:text-8xl font-semibold tracking-tight text-black">
-      DAYOFF
-    </h1>
-  </div>
-
-  {/* Desktop Right Side */}
-  <div className="hidden md:flex absolute right-0 top-0 flex-col items-center">
-    <a
-      href="/about"
-      className="flex flex-col items-center transition-opacity duration-200 hover:opacity-80"
-    >
-      <img
-        src="/logo.png"
-        alt="DayOff logo"
-        className="h-12 w-auto"
-      />
-      <span className="mt-1 text-xs text-black tracking-wide">
-        About
-      </span>
-    </a>
-
-    <button
-      onClick={() => setIsCartOpen(true)}
-      className="mt-3 text-sm tracking-[0.2em] text-black hover:opacity-70 transition"
-    >
-      CART ({cart.length})
-    </button>
-  </div>
-  </div>
-
-</header>
-
 
 {/* 🔥 QUOTE SECTION BELOW HEADER */}
 <section className="pb-24 px-12 bg-white text-black text-center">
