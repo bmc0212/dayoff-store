@@ -153,7 +153,9 @@ const progressPercentage = Math.min(
   <>
     <Hero />
 
-    <div className="min-h-screen bg-neutral-50 p-6">
+    <div 
+    id="shop-section"
+    className="min-h-screen bg-neutral-50 p-6">
 <header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
   {/* Center brand name */}
   <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-green-700">

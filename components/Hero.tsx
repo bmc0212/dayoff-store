@@ -1,4 +1,5 @@
 import Image from "next/image";
+ import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -26,15 +27,15 @@ export default function Hero() {
           Elevated essentials for the off days.
         </p>
 
-        <div className="mt-10 flex gap-6">
-          <button className="border border-white px-8 py-3 text-sm tracking-widest hover:bg-white hover:text-black transition">
-            SHOP
-          </button>
+      <div className="mt-10">
 
-          <button className="px-8 py-3 text-sm tracking-widest hover:opacity-70 transition">
-            EXPLORE
-          </button>
-        </div>
+<Link
+  href="#shop-section"
+  className="border border-white px-8 py-3 text-sm tracking-[0.3em] hover:bg-white hover:text-black transition"
+>
+  SHOP
+</Link>
+</div>
       </div>
     </section>
   );
