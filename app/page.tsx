@@ -244,9 +244,9 @@ const progressPercentage = Math.min(
   </div>
 </section>
 
-      <section className="max-w-6xl mx-auto mb-6">
+      <section className="max-w-6xl mx-auto mb-16">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-4xl font-light tracking-[0.2em] text-black">Shop the Drop</h2>
+          <h2 className="text-4xl font-light tracking-[0.2em] text-black">The Collection</h2>
           <span className="text-sm text-black">Free U.S. shipping over $75</span>
         </div>
       </section>
@@ -274,7 +274,7 @@ const progressPercentage = Math.min(
 
 
             <div className="flex items-center gap-2">
-              <h3 className="text-[17px] font-medium tracking-tight text-black">{product.name}
+              <h3 className="text-xl font-semibold tracking-tight text-black">{product.name}
                 <p className="mt-1 text-xs text-black/70 tracking-wide">
   {product.fit}
 </p>
