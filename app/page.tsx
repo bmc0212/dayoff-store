@@ -157,15 +157,34 @@ const progressPercentage = Math.min(
 
     <div 
     className="min-h-screen bg-white px-12 py-32">
-<header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
+<header className="max-w-6xl mx-auto mb-16 relative">
 
-  {/* Center brand name */}
-  <h1 className="text-6xl md:text-8xl font-semibold tracking-tight text-black">
-    DAYOFF
-  </h1>
+  {/* Top Row (Mobile Layout) */}
+  <div className="flex items-center justify-between md:hidden">
+    <a
+      href="/about"
+      className="text-sm text-black tracking-wide"
+    >
+      About
+    </a>
 
-  {/* Logo + About + Cart (top right) */}
-  <div className="absolute right-0 flex flex-col items-center">
+    <button
+      onClick={() => setIsCartOpen(true)}
+      className="text-sm tracking-[0.2em] text-black"
+    >
+      CART ({cart.length})
+    </button>
+  </div>
+
+  {/* Center Brand */}
+  <div className="text-center mt-8 md:mt-0">
+    <h1 className="text-6xl md:text-8xl font-semibold tracking-tight text-black">
+      DAYOFF
+    </h1>
+  </div>
+
+  {/* Desktop Right Side */}
+  <div className="hidden md:flex absolute right-0 top-0 flex-col items-center">
     <a
       href="/about"
       className="flex flex-col items-center transition-opacity duration-200 hover:opacity-80"
