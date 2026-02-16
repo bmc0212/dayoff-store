@@ -197,7 +197,7 @@ const progressPercentage = Math.min(
     Built for the Off Days.
   </h2>
 </section>
-<section className="py-32 px-16 grid md:grid-cols-2 gap-24 items-center bg-white">
+<section className="py-32 px-6 sm:px-10 md:px-16 grid md:grid-cols-2 gap-24 items-center bg-white">
   <div>
     <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-black">
       Designed With Intention.
@@ -211,7 +211,7 @@ const progressPercentage = Math.min(
     </p>
   </div>
 </section>
-<section className="py-32 px-16 bg-neutral-50">
+<section className="py-32 px-6 sm:px-10 md:px-16 bg-neutral-50">
   <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-20 text-center">
 
     <div>
@@ -351,10 +351,10 @@ const progressPercentage = Math.min(
 
       <div className="h-px bg-neutral-200 w-full" />
 
-      <section className="mt-32 py-40 px-16 bg-black text-white">
+      <section className="mt-32 py-40 px-6 sm:px-10 md:px-16 bg-black text-white">
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
 
-    <h2 className="text-6xl md:text-7xl font-semibold tracking-tight leading-tight">
+    <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-tight">
       Effort Looks Better
       <br />
       When It’s Effortless.
@@ -390,7 +390,7 @@ const progressPercentage = Math.min(
     </p>
   </div>
   <footer className="mt-24 border-t border-neutral-200"></footer>
-  <section className="py-32 px-16 text-center bg-white">
+  <section className="py-32 px-6 sm:px-10 md:px-16 text-center bg-white">
   <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
     Stay in the Loop.
   </h3>
@@ -419,7 +419,7 @@ const progressPercentage = Math.min(
     setSubscribed(false);
   }, 3000);
 }}
-    className="mt-10 flex justify-center"
+    className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
   >
     <input
       type="email"

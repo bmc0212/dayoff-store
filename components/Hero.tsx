@@ -11,7 +11,7 @@ export default function Hero() {
         alt="DayOff sunrise NYC balcony"
         fill
         priority
-        className="object-cover object-[center_30%]"
+        className="object-cover object-[center_25%] sm:object-[center_20%]"
       />
 
       {/* Dark Overlay */}
@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-center justify-center text-white">
         <Link
           href="#shop-section"
-          className="text-6xl md:text-8xl font-semibold tracking-tight relative after:absolute after:left-0 after:-bottom-2 after:h-[1px] after:w-full after:bg-white hover:opacity-80 transition"
+          className="text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tight relative after:absolute after:left-0 after:-bottom-2 after:h-[1px] after:w-full after:bg-white hover:opacity-80 transition"
         >
           SHOP
         </Link>
