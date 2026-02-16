@@ -211,6 +211,38 @@ const progressPercentage = Math.min(
     </p>
   </div>
 </section>
+<section className="py-32 px-16 bg-neutral-50">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-20 text-center">
+
+    <div>
+      <h3 className="text-xl font-semibold tracking-tight text-black">
+        Premium Fabrics
+      </h3>
+      <p className="mt-6 text-sm text-black opacity-70 leading-relaxed">
+        Heavyweight cotton designed to soften over time and hold its structure.
+      </p>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-semibold tracking-tight text-black">
+        Relaxed Structure
+      </h3>
+      <p className="mt-6 text-sm text-black opacity-70 leading-relaxed">
+        Tailored for comfort without sacrificing presence.
+      </p>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-semibold tracking-tight text-black">
+        Timeless Design
+      </h3>
+      <p className="mt-6 text-sm text-black opacity-70 leading-relaxed">
+        Minimal graphics built to last beyond trends and seasons.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
