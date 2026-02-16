@@ -157,7 +157,8 @@ const progressPercentage = Math.min(
 
     <div 
     className="min-h-screen bg-white px-12 py-32">
-<header className="max-w-6xl mx-auto mb-16 relative">
+<header className="sticky top-0 z-50 bg-white border-b border-neutral-200">
+  <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
   {/* Top Row (Mobile Layout) */}
   <div className="flex items-center justify-between md:hidden">
@@ -205,6 +206,7 @@ const progressPercentage = Math.min(
     >
       CART ({cart.length})
     </button>
+  </div>
   </div>
 
 </header>
