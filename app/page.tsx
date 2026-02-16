@@ -345,7 +345,7 @@ const progressPercentage = Math.min(
               className="flex items-center justify-between border-b pb-3"
             >
               <div>
-                <p className="text-sm font-medium">{item.name}</p>
+                <p className="text-sm font-medium text-black">{item.name}</p>
                <p className="text-xs text-black">
   Size: <span className="font-medium text-black">{item.size}</span>
 </p>
