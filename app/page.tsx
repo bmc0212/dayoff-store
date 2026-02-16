@@ -275,20 +275,39 @@ const progressPercentage = Math.min(
       className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         {sortedProducts.map((product, i) => (
           <div key={i} className="group">
-            <div className="mb-6 overflow-hidden relative group cursor-pointer">
+            <div
+  className="mb-6 overflow-hidden relative group cursor-pointer"
+  onClick={() =>
+    setFlippedProduct(
+      flippedProduct === product.name ? null : product.name
+    )
+  }
+>
 
   {/* Back Image */}
   <img
     src={product.imageBack}
     alt={`${product.name} back`}
-    className="absolute inset-0 w-full object-cover opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-105"
+    className={`absolute inset-0 w-full object-cover transition-all duration-500 ease-out
+      ${
+        flippedProduct === product.name
+          ? "opacity-100 scale-105"
+          : "opacity-0 group-hover:opacity-100 group-hover:scale-105"
+      }
+    `}
   />
 
   {/* Front Image */}
   <img
     src={product.imageFront}
     alt={`${product.name} front`}
-    className="w-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+    className={`w-full object-cover transition-all duration-500 ease-out
+      ${
+        flippedProduct === product.name
+          ? "opacity-0"
+          : "opacity-100 group-hover:opacity-0 group-hover:scale-105"
+      }
+    `}
   />
 
 </div>
