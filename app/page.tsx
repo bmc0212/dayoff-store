@@ -420,12 +420,12 @@ const progressPercentage = Math.min(
       name="email"
       required
       placeholder="Enter your email"
-      className="border border-black px-6 py-3 w-80 text-sm focus:outline-none"
+      className="border border-black px-6 py-3 w-80 text-sm text-black placeholder-black focus:outline-none"
     />
 
     <button
       type="submit"
-      className="ml-4 border border-black px-6 py-3 text-sm hover:bg-black hover:text-white transition"
+      className="ml-4 border border-black text-black px-6 py-3 text-sm hover:bg-black hover:text-white transition"
     >
       Subscribe
     </button>
