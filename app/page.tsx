@@ -275,7 +275,7 @@ const progressPercentage = Math.min(
 
     setTimeout(() => {
       setShowMiniCart(false);
-    }, 4000);
+    }, 2000);
   }}
   disabled={!selectedSizes[product.name]}
   className={`px-4 py-2 rounded-none transition ${
