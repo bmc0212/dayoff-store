@@ -8,22 +8,24 @@ export default function Navbar({ cartLength, openCart }: { cartLength: number; o
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Left */}
-        <div className="text-sm tracking-wide">
-          <a href="/about">About</a>
-        </div>
+       <div className="text-sm tracking-wide text-black">
+  <a href="/about" className="text-black hover:opacity-70 transition">
+    About
+  </a>
+</div>
 
         {/* Center Brand */}
         <div className="absolute left-1/2 -translate-x-1/2">
-          <h1 className="text-xl font-semibold tracking-tight">
-            DAYOFF
-          </h1>
+          <h1 className="text-xl font-bold tracking-tight text-black">
+  DAYOFF
+</h1>
         </div>
 
         {/* Right Bag */}
-        <button
-          onClick={openCart}
-          className="relative"
-        >
+       <button
+  onClick={openCart}
+  className="relative text-black hover:opacity-70 transition"
+>
           <ShoppingBag size={20} />
 
           {cartLength > 0 && (
