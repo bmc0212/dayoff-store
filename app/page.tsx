@@ -199,7 +199,7 @@ const progressPercentage = Math.min(
         {sortedProducts.map((product, i) => (
           <div key={i} className="group">
             <div
-  className="h-56 bg-neutral-100 rounded-xl mb-4 overflow-hidden relative group cursor-pointer"
+  className="mb-6 overflow-hidden relative group cursor-pointer"
   onClick={() =>
     setFlippedProduct(
       flippedProduct === product.name ? null : product.name
@@ -209,7 +209,7 @@ const progressPercentage = Math.min(
   <img
   src={product.imageBack}
   alt={`${product.name} back`}
-  className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${
+  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
     flippedProduct === product.name ? "opacity-0" : "opacity-100"
   }`}
 />
@@ -217,7 +217,7 @@ const progressPercentage = Math.min(
   src={product.imageFront}
   alt={`${product.name} front`}
   className={`
-    absolute inset-0 h-full w-full object-contain transition-opacity duration-300
+    absolute inset-0 h-full w-full object-cover transition-opacity duration-300
     opacity-0
     group-hover:opacity-100
     ${flippedProduct === product.name ? "opacity-100" : ""}
