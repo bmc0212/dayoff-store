@@ -277,10 +277,10 @@ const progressPercentage = Math.min(
   }, 2000);
 }}
   disabled={!selectedSizes[product.name]}
-  className={`px-4 py-2 rounded-xl transition ${
+  className={`px-4 py-2 rounded-none transition ${
     selectedSizes[product.name]
       ? "border border-black text-black hover:bg-black hover:text-white"
-      : "bg-neutral-300 text-neutral-500 cursor-not-allowed"
+      : "bg-neutral-300 text-black cursor-not-allowed"
   }`}
 >
   Add to Cart
@@ -328,7 +328,7 @@ const progressPercentage = Math.min(
         <h2 className="text-lg font-medium text-black">Your Cart</h2>
         <button
           onClick={() => setIsCartOpen(false)}
-          className="text-sm hover:underline"
+          className="text-sm hover:underline text-black"
         >
           Close
         </button>
@@ -346,7 +346,7 @@ const progressPercentage = Math.min(
             >
               <div>
                 <p className="text-sm font-medium">{item.name}</p>
-               <p className="text-xs text-black/70">
+               <p className="text-xs text-black">
   Size: <span className="font-medium text-black">{item.size}</span>
 </p>
               </div>
@@ -393,7 +393,7 @@ const progressPercentage = Math.min(
 
     {/* Existing Checkout Button */}
     <button
-      className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-black transition"
+      className="w-full border border-black text-black py-4 text-sm tracking-[0.2em] hover:bg-black hover:text-white transition"
   onClick={async () => {
     const items = cart
       .map((item) => {
