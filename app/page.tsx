@@ -639,6 +639,14 @@ const data = await res.json();
   </div>
 )}
        </div>
+       {cart.length > 0 && (
+  <button
+    onClick={() => setIsCartOpen(true)}
+    className="fixed bottom-6 right-6 md:hidden bg-black text-white px-5 py-3 text-sm tracking-wide shadow-lg"
+  >
+    CART ({cart.length})
+  </button>
+)}
   </>
 );
 }
