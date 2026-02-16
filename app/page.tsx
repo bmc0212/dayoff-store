@@ -158,8 +158,9 @@ const progressPercentage = Math.min(
     id="shop-section"
     className="min-h-screen bg-white px-12 py-32">
 <header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
+
   {/* Center brand name */}
-  <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
+  <h1 className="text-6xl md:text-8xl font-semibold tracking-tight text-black">
     DAYOFF
   </h1>
 
@@ -172,22 +173,30 @@ const progressPercentage = Math.min(
       <img
         src="/logo.png"
         alt="DayOff logo"
-        className="h-12 w-auto transition-transform duration-200 hover:scale-[1.03]"
+        className="h-12 w-auto"
       />
-      <span className="mt-1 text-xs text-black tracking-wide hover:underline">
+      <span className="mt-1 text-xs text-black tracking-wide">
         About
       </span>
     </a>
 
     <button
-  onClick={() => setIsCartOpen(true)}
-  className="mt-3 text-sm tracking-[0.2em] text-black hover:opacity-70 transition"
->
-  CART ({cart.length})
-</button>
+      onClick={() => setIsCartOpen(true)}
+      className="mt-3 text-sm tracking-[0.2em] text-black hover:opacity-70 transition"
+    >
+      CART ({cart.length})
+    </button>
   </div>
+
 </header>
 
+
+{/* 🔥 QUOTE SECTION BELOW HEADER */}
+<section className="pb-24 px-12 bg-white text-black text-center">
+  <h2 className="text-3xl md:text-4xl font-medium tracking-tight">
+    Built for the Off Days.
+  </h2>
+</section>
 
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
@@ -252,6 +261,7 @@ const progressPercentage = Math.min(
     >
       {size}
     </button>
+    
   ))}
 </div>
             <div className="flex items-center justify-between mt-4">
@@ -290,6 +300,14 @@ const progressPercentage = Math.min(
           </div>
         ))}
       </section>
+      <section className="mt-24 py-32 px-16 bg-black text-white grid md:grid-cols-2 gap-16 items-center">
+  <h2 className="text-5xl font-semibold">
+    Effort Looks Better When It’s Effortless.
+  </h2>
+  <p className="text-lg opacity-70">
+    Designed to move seamlessly between slow mornings and late evenings.
+  </p>
+</section>
       <footer className="mt-24 border-t border-neutral-200">
   <div className="max-w-6xl mx-auto px-6 py-12 text-center">
     <p className="text-sm font-medium text-black mb-4">
