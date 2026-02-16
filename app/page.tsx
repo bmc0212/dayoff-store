@@ -197,6 +197,20 @@ const progressPercentage = Math.min(
     Built for the Off Days.
   </h2>
 </section>
+<section className="py-32 px-16 grid md:grid-cols-2 gap-24 items-center bg-white">
+  <div>
+    <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-black">
+      Designed With Intention.
+    </h2>
+  </div>
+
+  <div>
+    <p className="text-lg text-black opacity-70 leading-relaxed">
+      DayOff is built around balance. Elevated fabrics. Relaxed silhouettes.
+      Timeless essentials made for the moments between the moments.
+    </p>
+  </div>
+</section>
 
       <section className="max-w-6xl mx-auto mb-6">
         <div className="flex items-center justify-between mb-4">
