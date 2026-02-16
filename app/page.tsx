@@ -155,7 +155,6 @@ const progressPercentage = Math.min(
     <Hero />
 
     <div 
-    id="shop-section"
     className="min-h-screen bg-white px-12 py-32">
 <header className="max-w-6xl mx-auto mb-16 relative flex items-center justify-center">
 
@@ -251,7 +250,9 @@ const progressPercentage = Math.min(
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+      <section 
+      id="shop-section"
+      className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         {sortedProducts.map((product, i) => (
           <div key={i} className="group">
             <div className="mb-6 overflow-hidden relative group cursor-pointer">
@@ -346,7 +347,7 @@ const progressPercentage = Math.min(
           </div>
         ))}
       </section>
-      
+
       <div className="h-px bg-neutral-200 w-full" />
 
       <section className="mt-32 py-40 px-16 bg-black text-white">
