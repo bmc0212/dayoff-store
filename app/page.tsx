@@ -388,6 +388,49 @@ const progressPercentage = Math.min(
       © {new Date().getFullYear()} DayOff. All rights reserved.
     </p>
   </div>
+  <footer className="mt-24 border-t border-neutral-200"></footer>
+  <section className="py-32 px-16 text-center bg-white">
+  <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-black">
+    Stay in the Loop.
+  </h3>
+
+  <p className="mt-6 text-sm text-black opacity-60">
+    Be the first to know about new releases and drops.
+  </p>
+
+  <form
+    onSubmit={async (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      form.reset();
+      alert("You're in.");
+    }}
+    className="mt-10 flex justify-center"
+  >
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="Enter your email"
+      className="border border-black px-6 py-3 w-80 text-sm focus:outline-none"
+    />
+
+    <button
+      type="submit"
+      className="ml-4 border border-black px-6 py-3 text-sm hover:bg-black hover:text-white transition"
+    >
+      Subscribe
+    </button>
+  </form>
+</section>
 </footer>
 {/* Cart Drawer */}
 {isCartOpen && (
