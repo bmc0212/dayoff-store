@@ -642,7 +642,7 @@ const data = await res.json();
        {cart.length > 0 && (
   <button
     onClick={() => setIsCartOpen(true)}
-    className="fixed bottom-6 right-6 md:hidden bg-black text-white px-5 py-3 text-sm tracking-wide shadow-lg"
+    className="fixed bottom-6 right-6 bg-black text-white px-5 py-3 md:px-6 md:py-4 text-sm tracking-wide shadow-lg"
   >
     CART ({cart.length})
   </button>
