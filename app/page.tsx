@@ -291,7 +291,7 @@ type Product = TeeProduct | HoodieProduct;
 
   return (
     <div key={i} className="group">
-           <div className="mb-6 overflow-hidden relative group cursor-pointer aspect-[4/5] bg-neutral-50">
+           <div className="mb-6 overflow-hidden relative group cursor-pointer aspect-[4/5]">
 
   {"colors" in product && colorData ? (
     <>
