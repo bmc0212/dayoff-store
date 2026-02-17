@@ -36,6 +36,12 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
     L: "price_1SwbhGEIwxz2SPmISmXYNaDV",
     XL: "price_1SxMKhEIwxz2SPmIH3mWKHJt",
   },
+  "DAYOFF Hoodie": {
+  S: "price_xxx",
+  M: "price_xxx",
+  L: "price_xxx",
+  XL: "price_xxx",
+},
 };
 
 export default function DayOffStore() {
@@ -50,9 +56,9 @@ export default function DayOffStore() {
 >([]);
 const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
-const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
 const [showMiniCart, setShowMiniCart] = useState(false);
 const [subscribed, setSubscribed] = useState(false);
+const [selectedColors, setSelectedColors] = useState<Record<string, string>>({});
 const FREE_SHIPPING_THRESHOLD = 75;
 
 const cartTotal = cart.reduce(
@@ -89,8 +95,35 @@ const progressPercentage = Math.min(
       hasCelebrated.current = false;
     }
   }, [cartTotal]);
+  type TeeProduct = {
+  name: string;
+  price: number;
+  color: string;
+  fit: string;
+  sizes: string[];
+  imageFront: string;
+  imageBack: string;
+  stripeLink: string;
+  isBestSeller: boolean;
+};
 
-  const products = [
+type HoodieProduct = {
+  name: string;
+  price: number;
+  fit: string;
+  sizes: string[];
+  isBestSeller: boolean;
+  colors: {
+    [key: string]: {
+      imageFront: string;
+      imageBack: string;
+    };
+  };
+};
+
+type Product = TeeProduct | HoodieProduct;
+
+  const products: Product[] = [
     {
       name: "Slow Mornings Tee",
       price: 30,
@@ -145,7 +178,24 @@ const progressPercentage = Math.min(
       imageBack: "/images/day-off-club-back.jpg",
       stripeLink: "https://buy.stripe.com/28EaEX1nH9C81kS6eTao800",
       isBestSeller: false
-    }
+    },
+    {
+  name: "DAYOFF Hoodie",
+  price: 60,
+  fit: "Relaxed fit · Heavyweight fleece",
+  sizes: ["S", "M", "L", "XL"],
+  isBestSeller: false,
+  colors: {
+    Bone: {
+      imageFront: "/images/bone-front.jpg",
+      imageBack: "/images/bone-back.jpg",
+    },
+    Charcoal: {
+      imageFront: "/images/charcoal-front.jpg",
+      imageBack: "/images/charcoal-back.jpg",
+    },
+  },
+}
   ];
 
   const sortedProducts = [...products].sort(
@@ -223,42 +273,65 @@ const progressPercentage = Math.min(
       <section 
       id="shop-section"
       className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-        {sortedProducts.map((product, i) => (
-          <div key={i} className="group">
-            <div
-  className="mb-6 overflow-hidden relative group cursor-pointer"
-  onClick={() =>
-    setFlippedProduct(
-      flippedProduct === product.name ? null : product.name
-    )
+        {sortedProducts.map((product, i) => {
+
+  const hasColors = "colors" in product;
+
+  let selectedColor;
+  let colorData;
+
+  if ("colors" in product) {
+    const colorKeys = Object.keys(product.colors);
+
+    selectedColor =
+      selectedColors[product.name] || colorKeys[0];
+
+    colorData = product.colors[selectedColor];
   }
->
 
-  {/* Back Image */}
-  <img
-    src={product.imageBack}
-    alt={`${product.name} back`}
-    className={`absolute inset-0 w-full object-cover transition-all duration-500 ease-out
-      ${
-        flippedProduct === product.name
-          ? "opacity-100 scale-105"
-          : "opacity-0 group-hover:opacity-100 group-hover:scale-105"
-      }
-    `}
-  />
+  return (
+    <div key={i} className="group">
+           <div className="mb-6 overflow-hidden relative group cursor-pointer">
 
-  {/* Front Image */}
-  <img
-    src={product.imageFront}
-    alt={`${product.name} front`}
-    className={`w-full object-cover transition-all duration-500 ease-out
-      ${
-        flippedProduct === product.name
-          ? "opacity-0"
-          : "opacity-100 group-hover:opacity-0 group-hover:scale-105"
-      }
-    `}
-  />
+  {"colors" in product && colorData ? (
+    <>
+      {/* Hoodie Back */}
+      <img
+        src={colorData.imageBack}
+        alt={`${product.name} back`}
+        className="absolute inset-0 w-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+      />
+
+      {/* Hoodie Front */}
+      <img
+        src={colorData.imageFront}
+        alt={`${product.name} front`}
+        className="w-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+      />
+    </>
+  ) : (
+    (() => {
+      const tee = product as TeeProduct;
+
+      return (
+        <>
+          {/* Tee Back */}
+          <img
+            src={tee.imageBack}
+            alt={`${tee.name} back`}
+            className="absolute inset-0 w-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+          />
+
+          {/* Tee Front */}
+          <img
+            src={tee.imageFront}
+            alt={`${tee.name} front`}
+            className="w-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+          />
+        </>
+      );
+    })()
+  )}
 
 </div>
 
@@ -276,7 +349,9 @@ const progressPercentage = Math.min(
               )}
             </div>
 
-            <p className="text-sm text-neutral-500">{product.color}</p>
+           {"color" in product && (
+  <p className="text-sm text-neutral-500">{product.color}</p>
+)}
 <div className="mt-3 flex gap-2">
   {product.sizes.map((size) => (
     <button
@@ -297,9 +372,32 @@ const progressPercentage = Math.min(
     >
       {size}
     </button>
-    
   ))}
 </div>
+{hasColors && (
+  <div className="mt-4 flex gap-3">
+    {Object.keys(product.colors).map((color) => (
+      <button
+        key={color}
+        onClick={() =>
+          setSelectedColors({
+            ...selectedColors,
+            [product.name]: color,
+          })
+        }
+        className={`px-4 py-1 text-xs border transition
+          ${
+            selectedColors[product.name] === color
+              ? "border-black bg-black text-white"
+              : "border-neutral-300 text-black hover:border-black"
+          }
+        `}
+      >
+        {color}
+      </button>
+    ))}
+  </div>
+)}
             <div className="flex items-center justify-between mt-4">
               <span className="font-medium text-black">${product.price}</span>
             <button
@@ -334,7 +432,8 @@ const progressPercentage = Math.min(
 </button>
             </div>
           </div>
-        ))}
+          );
+        })}
       </section>
 
       <div className="h-px bg-neutral-200 w-full" />
