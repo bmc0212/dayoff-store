@@ -36,23 +36,31 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
     L: "price_1SwbhGEIwxz2SPmISmXYNaDV",
     XL: "price_1SxMKhEIwxz2SPmIH3mWKHJt",
   },
-  "DAYOFF Hoodie": {
-  S: "price_xxx",
-  M: "price_xxx",
-  L: "price_xxx",
-  XL: "price_xxx",
+ "DAYOFF Hoodie - Bone": {
+  S: "price_1T1colEIwxz2SPmIeoGrRQSp",
+  M: "price_1T1cp3EIwxz2SPmIbXHOLw8q",
+  L: "price_1T1cpPEIwxz2SPmIskyyyTBD",
+  XL: "price_1T1cpdEIwxz2SPmIdCCZKeRd",
+},
+
+"DAYOFF Hoodie - Charcoal": {
+  S: "price_1T1cs1EIwxz2SPmIUXUkqPI1",
+  M: "price_1T1crmEIwxz2SPmITGFQQDzj",
+  L: "price_1T1crUEIwxz2SPmIGu1VialA",
+  XL: "price_1T1cr6EIwxz2SPmIh0uCdenm",
 },
 };
 
 export default function DayOffStore() {
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({});
   const [cart, setCart] = useState<
-  {
-    name: string;
-    size: string;
-    price: number;
-    quantity: number;
-  }[]
+{
+  name: string;
+  size: string;
+  color?: string | null;
+  price: number;
+  quantity: number;
+}[]
 >([]);
 const [addedMessage, setAddedMessage] = useState<string | null>(null);
 const [isCartOpen, setIsCartOpen] = useState(false);
@@ -405,15 +413,20 @@ type Product = TeeProduct | HoodieProduct;
     const size = selectedSizes[product.name];
     if (!size) return;
 
-    setCart([
-      ...cart,
-      {
-        name: product.name,
-        size,
-        price: product.price,
-        quantity: 1,
-      },
-    ]);
+    const color = selectedColors[product.name];
+
+setCart([
+  ...cart,
+  {
+    name: color
+      ? `${product.name} - ${color}`
+      : product.name,
+    size,
+    color: selectedColors[product.name] || null,
+    price: product.price,
+    quantity: 1,
+  },
+]);
 
     setShowMiniCart(true);
 
@@ -564,7 +577,10 @@ type Product = TeeProduct | HoodieProduct;
               <div>
                 <p className="text-sm font-medium text-black">{item.name}</p>
                <p className="text-xs text-black">
-  Size: <span className="font-medium text-black">{item.size}</span>
+  Size: <span className="font-medium">{item.size}</span>
+  {item.color && (
+    <> · Color: <span className="font-medium">{item.color}</span></>
+  )}
 </p>
               </div>
 
