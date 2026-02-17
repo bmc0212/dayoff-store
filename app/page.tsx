@@ -67,6 +67,8 @@ const [isCartOpen, setIsCartOpen] = useState(false);
 const [showMiniCart, setShowMiniCart] = useState(false);
 const [subscribed, setSubscribed] = useState(false);
 const [selectedColors, setSelectedColors] = useState<Record<string, string>>({});
+const [flippedProduct, setFlippedProduct] = useState<string | null>(null);
+const [isMobile, setIsMobile] = useState(false);
 const FREE_SHIPPING_THRESHOLD = 75;
 
 const cartTotal = cart.reduce(
@@ -84,6 +86,16 @@ const progressPercentage = Math.min(
   100
 );
  const hasCelebrated = useRef(false);
+ useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
 
   useEffect(() => {
     if (
@@ -299,7 +311,16 @@ type Product = TeeProduct | HoodieProduct;
 
   return (
     <div key={i} className="group">
-           <div className="mb-6 overflow-hidden relative group cursor-pointer aspect-[4/5]">
+           <div
+  className="mb-6 overflow-hidden relative group cursor-pointer aspect-[4/5]"
+  onClick={() => {
+    if (isMobile) {
+      setFlippedProduct(
+        flippedProduct === product.name ? null : product.name
+      );
+    }
+  }}
+>
 
   {"colors" in product && colorData ? (
     <>
@@ -307,14 +328,34 @@ type Product = TeeProduct | HoodieProduct;
       <img
         src={colorData.imageBack}
         alt={`${product.name} back`}
-        className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+        className={`
+  absolute inset-0 w-full h-full object-contain
+  transition-all duration-500 ease-out
+  ${
+    isMobile
+      ? flippedProduct === product.name
+        ? "opacity-100 scale-105"
+        : "opacity-0"
+      : "opacity-0 group-hover:opacity-100 group-hover:scale-105"
+  }
+`}
       />
 
       {/* Hoodie Front */}
       <img
         src={colorData.imageFront}
         alt={`${product.name} front`}
-        className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+       className={`
+  absolute inset-0 w-full h-full object-contain
+  transition-all duration-500 ease-out
+  ${
+    isMobile
+      ? flippedProduct === product.name
+        ? "opacity-0"
+        : "opacity-100"
+      : "group-hover:opacity-0 group-hover:scale-105"
+  }
+`}
       />
     </>
   ) : (
@@ -327,14 +368,34 @@ type Product = TeeProduct | HoodieProduct;
           <img
             src={tee.imageBack}
             alt={`${tee.name} back`}
-            className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+            className={`
+  absolute inset-0 w-full h-full object-contain
+  transition-all duration-500 ease-out
+  ${
+    isMobile
+      ? flippedProduct === product.name
+        ? "opacity-100 scale-105"
+        : "opacity-0"
+      : "opacity-0 group-hover:opacity-100 group-hover:scale-105"
+  }
+`}
           />
 
           {/* Tee Front */}
           <img
             src={tee.imageFront}
             alt={`${tee.name} front`}
-            className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+            className={`
+  absolute inset-0 w-full h-full object-contain
+  transition-all duration-500 ease-out
+  ${
+    isMobile
+      ? flippedProduct === product.name
+        ? "opacity-0"
+        : "opacity-100"
+      : "group-hover:opacity-0 group-hover:scale-105"
+  }
+`}
           />
         </>
       );
