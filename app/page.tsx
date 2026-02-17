@@ -291,7 +291,7 @@ type Product = TeeProduct | HoodieProduct;
 
   return (
     <div key={i} className="group">
-           <div className="mb-6 overflow-hidden relative group cursor-pointer">
+           <div className="mb-6 overflow-hidden relative group cursor-pointer aspect-[4/5] bg-neutral-50">
 
   {"colors" in product && colorData ? (
     <>
@@ -299,14 +299,14 @@ type Product = TeeProduct | HoodieProduct;
       <img
         src={colorData.imageBack}
         alt={`${product.name} back`}
-        className="absolute inset-0 w-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
       />
 
       {/* Hoodie Front */}
       <img
         src={colorData.imageFront}
         alt={`${product.name} front`}
-        className="w-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
       />
     </>
   ) : (
@@ -319,14 +319,14 @@ type Product = TeeProduct | HoodieProduct;
           <img
             src={tee.imageBack}
             alt={`${tee.name} back`}
-            className="absolute inset-0 w-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-105"
           />
 
           {/* Tee Front */}
           <img
             src={tee.imageFront}
             alt={`${tee.name} front`}
-            className="w-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-105"
           />
         </>
       );
